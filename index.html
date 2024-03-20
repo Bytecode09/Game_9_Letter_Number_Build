@@ -6,17 +6,6 @@
     <title>Unity WebGL Player | Game 9 Letter Number</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
-    <script type="text/javascript">
-      function sendMessageToFlutter(jsonData) {
-      console.log("Sending data to flutter: " + jsonData)
-      Flutter.postMessage(jsonData);
-      }
-      
-      function sendMessageToUnity(jsonData) {
-      console.log("Sending data to unity: " + jsonData)
-      gameInstance.SendMessage('JavaScriptManager', 'ReceiveData', jsonData);
-      }
-    </script>
   </head>
   <body>
     <div id="unity-container" class="unity-desktop">
@@ -111,11 +100,8 @@
 
       loadingBar.style.display = "block";
 
-       var script = document.createElement("script");
-      
-      var gameInstance = null;
+      var script = document.createElement("script");
       script.src = loaderUrl;
-      var myGameInstance = null;
       script.onload = () => {
         createUnityInstance(canvas, config, (progress) => {
           progressBarFull.style.width = 100 * progress + "%";
